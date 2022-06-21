@@ -3,13 +3,14 @@ package Java;
 public class ObjectTest {
     public static void main(String[] args){
 
-    byteObjectTest();        
+    byteObjectTest();
+    intObjTest();        
 
     }
 
 
 
-    //byte 对象只有1byte，所以-128~127，当值为字符时，他保存的其实是ascci码的对应值。
+    //byte 对象只有1byte，所以-128~127，当值为字符时，他保存的其实是ascci码的对应值。因为Ascci码刚好8bit的大小
     public static void byteObjectTest(){
 
         //byte
@@ -22,6 +23,13 @@ public class ObjectTest {
 
     }
 
+    //int 同上的byte
+    public static void intObjTest(){
+        int a = 1;
+        int b = 'a';
+        System.out.println(a);
+        System.out.println(b);
+    }
 
 
     //array[]
