@@ -1,4 +1,4 @@
-package 算法.整数;
+package algorithm.Integer;
 
 public class BineryAdd {
     public static void main(String[] args){
