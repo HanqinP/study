@@ -1,7 +1,7 @@
 from typing import List
 
 # 递归版
-def heapify(arr:List, n: int, i: int):
+def heapify_cursion(arr:List, n: int, i: int):
     leftchild = i*2+1
     rightchild = i*2+2
     largest = i
@@ -13,28 +13,50 @@ def heapify(arr:List, n: int, i: int):
 
     if largest != i:
         arr[i], arr[largest] = arr[largest], arr[i]
-        heapify(arr, n, largest)
+        heapify_cursion(arr, n, largest)
+
+def heapify_no_cursion(ls: List, n: int, i: int):
+    leftchild = i*2+1
+    rightchild = i*2+2
+    largest = i
+    while i <= n//2-1:
+        if leftchild < n and ls[leftchild] > ls[largest]:
+            largest = leftchild
+        if rightchild < n and ls[rightchild] > ls[largest]:
+            largest = rightchild
+
+        if largest != i:
+            ls[largest], ls[i] = ls[i], ls[largest]
+
+        i = largest
+        leftchild = i*2+1
+        rightchild = i*2+2
 
 def doheapsort(arr:List):
-    print("开始堆排序...")
-    n = len(ls)
+    """
+    this is the heapsort function, is will modify arr directly.
+
+    Parameters:
+        arr(List): The list need to be sorted
+
+    Return:
+        None
+    """
+    print("start heap sort...")
+    n = len(arr)
     # 生成大顶堆
     print("生成大顶堆...")
     for i in range(n//2-1, -1, -1):
-        heapify(ls, n, i)
-
-
+        #非递归
+        heapify_no_cursion(arr, n, i)
+        #递归
+        #heapify_cursion(arr, n, i)
 
     # 排序
     print("排序...")
     for i in range(n-1, 0, -1):
         arr[i], arr[0] = arr[0], arr[i]
-        heapify(arr, i, 0)
-
-ls = [1,4,3,2,65,23]
-
-doheapsort(ls)
-
-
-print(ls)
-print("Finish")
+        #非递归
+        heapify_no_cursion(arr, i, 0)
+        #递归
+        #heapify_cursion(arr, n, i)
